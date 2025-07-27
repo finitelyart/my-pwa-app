@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      strategy: 'generateSW',
+      strategies: 'generateSW',
       minify: false,
       includeAssets: ['vite.svg'], // Only include existing assets
       manifest: {

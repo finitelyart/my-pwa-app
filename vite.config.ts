@@ -9,9 +9,6 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategy: 'generateSW',
       minify: false,
-      workbox: {
-        minify: false,
-      },
       includeAssets: ['vite.svg'], // Only include existing assets
       manifest: {
         name: 'My Awesome PWA', // Your app's full name

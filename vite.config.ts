@@ -7,7 +7,12 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'], // Include any other assets you want cached
+      strategy: 'generateSW',
+      minify: false,
+      workbox: {
+        minify: false,
+      },
+      includeAssets: ['vite.svg'], // Only include existing assets
       manifest: {
         name: 'My Awesome PWA', // Your app's full name
         short_name: 'MyPWA',    // Short name for homescreen
@@ -15,14 +20,9 @@ export default defineConfig({
         theme_color: '#ffffff', // Theme color for the browser UI
         icons: [
           {
-            src: '/pwa-192x192.png', // Path to your 192x192 PWA icon
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png', // Path to your 512x512 PWA icon
-            sizes: '512x512',
-            type: 'image/png',
+            src: 'vite.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
           },
         ],
       },
@@ -31,5 +31,7 @@ export default defineConfig({
       },
     }),
   ],
+build: {minify: false},
+base: '/my-pwa-app/',
 });
 

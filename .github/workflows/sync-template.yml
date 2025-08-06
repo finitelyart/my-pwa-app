@@ -4,10 +4,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# IMPORTANT: Change this URL to your template repository.
-# For example: https://github.com/your-username/your-template-repo.git
 env:
-  TEMPLATE_REPO_URL: https://github.com/your-username/your-template-repo.git
+  TEMPLATE_REPO_URL: https://github.com/finitelyart/my-pwa-app.git
 
 permissions:
   contents: write

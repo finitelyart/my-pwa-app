@@ -32,9 +32,16 @@ jobs:
           git remote add template ${{ env.TEMPLATE_REPO_URL }}
           git fetch template
 
-          # Merge changes from template's main branch
+          # Merge changes from template's main branch.
           # Using "|| true" to allow the workflow to continue even with merge conflicts.
           git merge template/main --allow-unrelated-histories --no-ff --no-commit || true
+
+          # If merge conflicts exist, stage the files with conflict markers.
+          # This resolves the "unresolved merge" state and allows the PR creation to proceed.
+          if ! git diff --quiet --diff-filter=U; then
+            echo "Merge conflicts detected. Staging files with conflict markers."
+            git add .
+          fi
 
           # Check if there are any changes to commit (including conflicts)
           if git diff --quiet --cached; then

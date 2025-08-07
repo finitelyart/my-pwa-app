@@ -53,3 +53,12 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
+
+// --- FORCED ERROR FOR TESTING ---
+// This will throw an error 3 seconds after the app loads in development.
+// You should see this error reported in your Vite terminal.
+if (import.meta.env.DEV) {
+  setTimeout(() => {
+    throw new Error('This is a test error to check the Vite console logger.');
+  }, 3000);
+}
